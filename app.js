@@ -7,7 +7,7 @@ function makeSlideshow(selector) {
     const dotsContainer = slider.querySelector('.slider-dots');
     let currentIndex = 0;
     let slideInterval;
- 
+
     function createDots() {
         slides.forEach((_, index) => {
             const dot = document.createElement('button');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dots = document.querySelectorAll('.dot-footer');
     const slides = document.querySelectorAll('.slide-footer');
     let currentSlide = 0;
-    const intervalTime = 5000; 
+    const intervalTime = 5000;
 
     function showSlide(index) {
         dots.forEach(d => d.classList.remove('active'));
@@ -85,10 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let slideInterval = setInterval(nextSlide, intervalTime);
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            clearInterval(slideInterval); 
+            clearInterval(slideInterval);
             currentSlide = index;
             showSlide(currentSlide);
-            slideInterval = setInterval(nextSlide, intervalTime); 
+            slideInterval = setInterval(nextSlide, intervalTime);
         });
     });
 
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) { 
+        if (window.scrollY > 300) {
             scrollToTopBtn.style.display = 'block';
         } else {
             scrollToTopBtn.style.display = 'none';
@@ -109,7 +109,52 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollToTopBtn.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth' 
+            behavior: 'smooth'
         });
     });
+});
+
+// Home
+document.querySelector('.sidebar').addEventListener('click', function(e) {
+    const clickedCategory = e.target.closest('.category');
+
+    if (clickedCategory) {
+        e.stopPropagation();
+        const subcategory = clickedCategory.nextElementSibling;
+        const arrow = clickedCategory.querySelector('.arrow');
+
+        if (subcategory && subcategory.classList.contains('subcategory')) {
+            subcategory.style.display = subcategory.style.display === 'block' ? 'none' : 'block';
+            arrow.classList.toggle('down-arrow');
+            arrow.classList.toggle('right-arrow');
+        } else {
+            if (arrow) {
+                arrow.classList.remove('down-arrow');
+                arrow.classList.add('right-arrow');
+            }
+        }
+
+        clickedCategory.classList.toggle('active');
+        clickedCategory.parentElement.querySelectorAll('.category').forEach(sibling => {
+            if (sibling !== clickedCategory) {
+                sibling.classList.remove('active');
+                const siblingArrow = sibling.querySelector('.arrow');
+                if (siblingArrow) {
+                    siblingArrow.classList.remove('down-arrow');
+                    siblingArrow.classList.add('right-arrow');
+                }
+                const siblingSubcategory = sibling.nextElementSibling;
+                if (siblingSubcategory && siblingSubcategory.classList.contains('subcategory')) {
+                    siblingSubcategory.style.display = 'none';
+                }
+            }
+        });
+
+        clickedCategory.parentElement.querySelectorAll('.category').forEach(sibling => {
+            if (sibling !== clickedCategory) {
+                sibling.classList.remove('selected');
+            }
+        });
+        clickedCategory.classList.toggle('selected');
+    }
 });

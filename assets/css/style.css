@@ -36,6 +36,16 @@ font-weight: 700;
   color: #27ada9;
 }
 
+h3 {
+  font-size: 19px;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #3c3950;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
 /* Header Styles */
 .top-bar {
     background-color: #f8f8f8;
@@ -186,7 +196,7 @@ nav {
 .slide img {
     width: 100%;
     background-size: cover;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-position: center;
 }
 
@@ -237,7 +247,6 @@ nav {
     background: #333;
 }
 
-
 .slider-nav button {
     position: absolute;
     top: 50%;
@@ -259,6 +268,209 @@ nav {
 
 .slider-nav .next {
     right: 0px;
+}
+
+/* style home */
+.grid-container {
+  display: grid;
+  grid-template-columns: 250px auto;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "sidebar product-columns"
+    "sidebar product-columns"
+    "sidebar pagination";
+  gap: 44px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.category {
+  border: 1px solid #e0e0e0;
+}
+
+#category-aenean {
+  border-bottom: 1px #e0e0e0 solid;
+}
+
+.product-columns {
+  grid-area: product-columns;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 44px;
+}
+
+.product-column {
+  display: grid;
+  gap: 44px;
+}
+
+.product-item {
+  background-color: #e6e6e6;
+  text-align: center;
+  height: 345px;
+  position: relative;
+}
+
+.information-product {
+  background-color: #FFFF;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.product-item h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #3c3950;
+  font-weight: 700;
+  font-family: "Montserrat";
+  text-align: center;
+  margin: 0px;
+  position: relative;
+  transition: 1ss;
+}
+
+.product-item h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 2px;
+    background-color: #00a8ff;
+}
+
+.information-product:hover h3::after {
+  width: 70px;
+}
+
+.information-product:hover {
+  transition: 0.5s;
+  background-color: #393d50;
+  cursor: pointer;
+}
+
+.information-product:hover h3 {
+  color: #FFFF;
+}
+
+.information-product:hover p {
+  color: #99a9b5;
+}
+
+.product-item p {
+  font-size: 14px;
+  color: #5f727f;
+  font-weight: 400;
+}
+
+.pagination {
+  grid-area: pagination;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+}
+
+.pagination button {
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  background-color: #FFFF;
+  cursor: pointer;
+  transition: 0.5px;
+  border: 1px solid #2c3e50;
+}
+
+.pagination button.active {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.pagination button:hover {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.text-category {
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 50px;
+  text-transform: uppercase;
+  color: #3c3950;
+  font-weight: 700;
+  transition: 0.5s;
+}
+
+.text-category:hover {
+  color: red;
+}
+
+.category {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.category:last-child {
+  border-bottom: none;
+}
+
+.subcategory {
+  display: none;
+  padding-left: 20px;
+  background-color: #f9f9f9;
+}
+
+.subcategory:hover .text-category {
+  color: red;
+}
+
+.subcategory .category {
+  border-bottom: none;
+}
+
+.active {
+  color: #00a0d2;
+}
+
+.arrow {
+  font-size: 12px;
+}
+
+.down-arrow::after {
+  content: '>';
+  font-size: 15px;
+}
+
+.right-arrow::after {
+  content: '>';
+  font-size: 15px;
+  transform: rotate(90deg);
+}
+
+.category.active .arrow {
+  transform: rotate(90deg);
+}
+
+.selected {
+  background-color: #e6f3f7;
+}
+
+.category:hover {
+  color: red;
 }
 
 /* Footer */
@@ -372,7 +584,7 @@ footer {
   margin-top: 35px;
 }
 
-.email-us input, 
+.email-us input,
 .email-us textarea {
   background-color: #181828;
   border: 1px solid #394050;
@@ -380,13 +592,13 @@ footer {
   padding: 8px;
   border-radius: 3px;
   margin-top: 5px;
-  color: white; 
+  color: white;
 }
 
-.email-us input:focus, 
+.email-us input:focus,
 .email-us textarea:focus {
   border-color: #27ada9;
-  outline: none; 
+  outline: none;
 }
 
 .email-us .btn-submit {
