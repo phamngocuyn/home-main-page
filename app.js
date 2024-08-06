@@ -158,3 +158,136 @@ document.querySelector('.sidebar').addEventListener('click', function(e) {
         clickedCategory.classList.toggle('selected');
     }
 });
+
+// filter-pricing
+const rangeInput = document.querySelectorAll(".range-slider input");
+const minValue = document.querySelector(".min-value");
+const maxValue = document.querySelector(".max-value");
+
+rangeInput.forEach(input => {
+  input.addEventListener("input", e => {
+    let minPrice = parseInt(rangeInput[0].value);
+    let maxPrice = parseInt(rangeInput[1].value);
+
+    if(maxPrice - minPrice < 0){
+      if(e.target.className === "min") {
+        rangeInput[0].value = maxPrice;
+        minPrice = maxPrice;
+      } else {
+        rangeInput[1].value = minPrice;
+        maxPrice = minPrice;
+      }
+    }
+
+    minValue.textContent = minPrice;
+    maxValue.textContent = maxPrice;
+  });
+});
+
+//select sort
+document.getElementById('sortOrder').addEventListener('change', function() {
+  const sortOrder = this.checked ? 'ASC' : 'DESC';
+  console.log(sortOrder);
+});
+
+// select option filter
+document.querySelector('.sortingSelect').addEventListener('change', function() {
+  const selectedValue = this.value;
+  switch (selectedValue) {
+    case 'DEFAULT':
+      console.log('Default sorting selected');
+      break;
+    case 'SORTING1':
+      console.log('Sorting 1 selected');
+      break;
+    case 'SORTING2':
+      console.log('Sorting 2 selected');
+      break;
+    default:
+      console.log('Unknown sorting option');
+  }
+});
+
+//search product
+document.getElementById('searchButton').addEventListener('click', function() {
+  const searchInput = document.getElementById('searchInput').value;
+  if (searchInput.trim() === '') {
+    console.log('input rỗng');
+    return;
+  }
+  console.log('Searching for:', searchInput);
+});
+document.getElementById('searchInput').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    document.getElementById('searchButton').click();
+  }
+});
+
+//select số lượng item trong page
+function updateResultsInfo() {
+  const resultsInfo = document.querySelector('.results-info');
+  const perPageSelect = document.querySelector('.perPageSelect');
+  const perPage = parseInt(perPageSelect.value, 10);
+  const totalResults = 30;
+  const totalPages = Math.ceil(totalResults / perPage);
+  const currentPage = 1;
+  const start = (currentPage - 1) * perPage + 1;
+  const end = Math.min(currentPage * perPage, totalResults);
+  resultsInfo.textContent = `Showing ${start}-${end} of ${totalResults} results`;
+}
+document.querySelector('.perPageSelect').addEventListener('change', updateResultsInfo);
+updateResultsInfo();
+
+// select fiter theo color
+function handleColorSort() {
+  const sortingSelect = document.querySelector('.select-by-color');
+  const selectedColor = sortingSelect.value;
+  switch (selectedColor) {
+    case 'ANYCOLOR':
+      console.log('Sorting by= color (default)');
+      break;
+    case 'COLOR1':
+      console.log('Sorting by color 1');
+      break;
+    case 'COLOR2':
+      console.log('Sorting by color 2');
+      break;
+    default:
+      console.log('Unknown color option');
+  }
+}
+document.querySelector('.sorting-by-color').addEventListener('change', handleColorSort);
+
+// select filter theo size
+function handleSizeFilter() {
+  const sizeSelect = document.querySelector('.select-by-size');
+  if (!sizeSelect) {
+    console.error('Select element not found');
+    return;
+  }
+  const selectedSize = sizeSelect.value;
+  console.log('Selected size:', selectedSize);
+
+  switch (selectedSize) {
+    case 'ANYSIZE':
+      console.log('Filtering by size (default)');
+      break;
+    case 'SIZE1':
+      console.log('Filtering by size 1');
+      break;
+    case 'SIZE2':
+      console.log('Filtering by size 2');
+      break;
+    default:
+      console.log('Unknown size option');
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const sizeSelect = document.querySelector('.select-by-size');
+  if (sizeSelect) {
+    sizeSelect.addEventListener('change', handleSizeFilter);
+    handleSizeFilter();
+  } else {
+    console.error('error');
+  }
+});
