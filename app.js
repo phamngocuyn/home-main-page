@@ -291,3 +291,36 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('error');
   }
 });
+
+//slider brands (fix)
+function ourInitializeSlider() {
+  let ourCurrentSlide = 0;
+  const ourSlides = document.querySelectorAll('.brands-slider');
+  const ourNavDots = document.querySelectorAll('.nav-dot');
+
+  function ourShowSlide(index) {
+      ourSlides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+          ourNavDots[i].classList.toggle('active', i === index);
+      });
+  }
+
+  function ourNextSlide() {
+      ourCurrentSlide = (ourCurrentSlide + 1) % ourSlides.length;
+      ourShowSlide(ourCurrentSlide);
+  }
+
+  function ourSetNavDotClickEvents() {
+      ourNavDots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+              ourCurrentSlide = index;
+              ourShowSlide(ourCurrentSlide);
+          });
+      });
+  }
+
+  ourSetNavDotClickEvents();
+  ourShowSlide(ourCurrentSlide);
+  setInterval(ourNextSlide, 5000);
+}
+ourInitializeSlider();
