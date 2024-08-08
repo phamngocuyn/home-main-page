@@ -1,3 +1,63 @@
+//dropdaown menu
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  menuToggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('active');
+  });
+  function handleClickOutside(event) {
+      if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+          mobileMenu.classList.remove('active');
+      }
+  }
+  document.addEventListener('click', handleClickOutside);
+});
+
+
+// fixed srcoll
+document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.querySelector('nav');
+  const scrollThreshold = 50;
+  function handleScroll() {
+      if (window.scrollY > scrollThreshold) {
+          nav.classList.add('nav-fixed');
+      } else {
+          nav.classList.remove('nav-fixed');
+      }
+  }
+  window.addEventListener('scroll', handleScroll);
+});
+
+// dropdown product category
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButton = document.querySelector('.dropdown-toggle');
+  const sidebar = document.querySelector('.sidebar1');
+
+  toggleButton.addEventListener('click', function () {
+      sidebar.classList.toggle('show');
+  });
+});
+
+//dropdown sorting
+document.addEventListener('DOMContentLoaded', function() {
+  var menuToggle = document.querySelector(".dropbtn");
+  var mobileMenu = document.querySelector(".dropdown-content");
+
+  menuToggle.addEventListener('click', function(event) {
+      mobileMenu.classList.toggle("show");
+      event.stopPropagation();
+  });
+  function handleClickOutside(event) {
+      if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+          mobileMenu.classList.remove('show');
+      }
+  }
+
+  // Add event listener for clicks on the document
+  document.addEventListener('click', handleClickOutside);
+});
+
 //Slider banner
 function makeSlideshow(selector) {
     const slider = document.querySelector(selector);

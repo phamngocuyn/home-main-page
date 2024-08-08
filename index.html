@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop-main</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.media.css">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -50,6 +51,9 @@
                 <div class="logo">
                     <img src="./assets/img/logo.png" alt="TheGem">
                 </div>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                  <img src="./assets/img/icon" alt="menu">
+                </button>
                 <ul class="main-menu">
                     <li><a href="#">HOME</a></li>
                     <li><a href="#">PAGES</a></li>
@@ -75,6 +79,31 @@
                 </div>
             </div>
         </nav>
+        <div class="mobile-menu">
+          <ul class="mobile-menu-list">
+              <li><a href="#">HOME</a></li>
+              <li><a href="#">PAGES</a></li>
+              <li><a href="#">BLOG</a></li>
+              <li><a href="#">PORTFOLIOS</a></li>
+              <li><a href="#">SHOP</a></li>
+              <li><a href="#">FEATURES</a></li>
+              <li><a href="#">ELEMENTS</a></li>
+              <li class="icon-header">
+                <a href="#">
+                  <img src="./assets/img/icon/language.png" alt="language">
+                </a>
+                <a href="#" class="search-icon">
+                  <img src="./assets/img/icon/search.png" alt="search">
+                </a>
+                <a href="#" class="cart-icon">
+                  <img src="./assets/img/icon/cart.png" alt="cart">
+                  <span>
+                      <img src="./assets/img/icon/tag-cart.png" alt="tag-cart">
+                  </span>
+                </a>
+              </li>
+          </ul>
+      </div>
     </header>
 
     <main>
@@ -112,7 +141,9 @@
 
         <!-- Product - Category -->
         <div class="grid-container container">
-            <div class="grid-item sidebar">
+          <div class="sidebar-wrapper">
+            <button class="dropdown-toggle">CATEGORIES</button>
+            <div class="grid-item sidebar sidebar1">
                 <h3>CATEGORIES
                     <span>
                         <img src="./assets/img/icon/icon-colum-footer.png" alt="">
@@ -181,6 +212,7 @@
                 <div class="category" id="category-aenean">
                     <span class="text-category">AENEAN</span>
                 </div>
+              </div>
             </div>
             <!-- Product Columns -->
             <div class="grid-item product-columns">
@@ -219,12 +251,7 @@
                             <p>9 items</p>
                         </div>
                     </div>
-                    <div class="product-item">
-                        <div class="information-product">
-                            <h3>SALES</h3>
-                            <p>9 items</p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- Pagination -->
@@ -235,7 +262,7 @@
         </div>
 
         <!-- Filter - Product -->
-        <div class="grid-container container-filter">
+        <div class="grid-container container container-media">
           <div class="grid-item sidebar">
             <div class="search-container">
               <input type="text" id="searchInput" placeholder="Search for products...">
@@ -447,27 +474,54 @@
           <div class="grid-container product-columns">
             <div class="grid-item item1">
               <div class="sorting-controls">
-                <select class="sortingSelect">
-                  <option value="DEFAULT">Default sorting1</option>
-                  <option value="SORTING2">sorting2</option>
-                  <option value="SORTING2">sorting3</option>
-                </select>
+                  <div class="sorting-controls-content">
+                      <div class="dropdown">
+                          <button class="dropbtn">Menu</button>
+                          <div class="dropdown-content">
+                            <select class="sortingSelect">
+                              <option value="DEFAULT">Default sorting1</option>
+                              <option value="SORTING2">sorting2</option>
+                              <option value="SORTING3">sorting3</option>
+                            </select>
 
-                <span class="order-label">DESC</span>
-                <label class="switch">
-                  <input type="checkbox" id="sortOrder">
-                  <span class="slider-switch"></span>
-                </label>
-                <span class="order-label">ASC</span>
+                            <span class="order-label">DESC</span>
+                            <label class="switch">
+                              <input type="checkbox" id="sortOrder">
+                              <span class="slider-switch"></span>
+                            </label>
+                            <span class="order-label">ASC</span>
 
-                <span class="results-info"></span>
-                <select class="perPageSelect">
-                  <option value="12">Show 12 on page</option>
-                  <option value="20">Show 20 on page</option>
-                  <option value="30">Show 30 on page</option>
-                </select>
+                            <span class="results-info"></span>
+                            <select class="perPageSelect">
+                              <option value="12">Show 12 on page</option>
+                              <option value="20">Show 20 on page</option>
+                              <option value="30">Show 30 on page</option>
+                            </select>
+                          </div>
+                      </div>
+                      <select class="sortingSelect">
+                          <option value="DEFAULT">Default sorting1</option>
+                          <option value="SORTING2">sorting2</option>
+                          <option value="SORTING3">sorting3</option>
+                      </select>
+
+                      <span class="order-label">DESC</span>
+                      <label class="switch">
+                          <input type="checkbox" id="sortOrder">
+                          <span class="slider-switch"></span>
+                      </label>
+                      <span class="order-label">ASC</span>
+
+                      <span class="results-info">Showing 1-12 of 17 result</span>
+                      <select class="perPageSelect">
+                          <option value="12">Show 12 on page</option>
+                          <option value="20">Show 20 on page</option>
+                          <option value="30">Show 30 on page</option>
+                      </select>
+                  </div>
               </div>
             </div>
+
             <div class="product-column">
               <div class="product-item1">
                 <div class="product-card">
@@ -910,8 +964,9 @@
               <div class="nav-dot active"></div>
               <div class="nav-dot"></div>
           </div>
-      </div>
+        </div>
 
+        <!-- Lastest new -->
         <div class="latest-new-container container">
           <h2 class="title">LATEST NEWS</h2>
           <div class="news-grid">
@@ -1014,6 +1069,7 @@
           </div>
         </div>
 
+        <!-- accept method -->
         <div class="container-method container">
           <div class="card">
             <div class="card-header">
@@ -1047,6 +1103,8 @@
             </ul>
           </div>
         </div>
+
+        <!-- top product -->
         <div class="top-product-grid">
           <div class="top-product-content container">
             <div class="top-product-category">
@@ -1189,7 +1247,6 @@
             </button>
           </div>
         </div>
-
     </main>
 
     <footer>
