@@ -139,7 +139,7 @@ nav {
 }
 
 .logo img {
-  height: 50px;
+  height: 100%;
 }
 
 .logo img:hover {
@@ -637,13 +637,28 @@ input:checked + .slider-switch:before {
 }
 
 .results-info {
-  margin-left: 375px;
   margin-right: 10px;
   font-size: 16px;
   line-height: 25px;
   color: #99a9b5;
   font-weight: 400;
 }
+
+.sort {
+  display: flex;
+  justify-content: end;
+  margin-right: auto;
+  align-items: center;
+  margin: 0;
+}
+
+.sorting-controls-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
 
 .perPageSelect {
   width: 181px;
@@ -791,7 +806,6 @@ input:checked + .slider-switch:before {
   cursor: pointer;
 }
 
-/* fix */
 .recently-view-container {
   margin-top: 60px;
   max-width: 300px;
